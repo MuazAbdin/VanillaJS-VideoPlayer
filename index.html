@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MuazAbdin VideoPlayer</title>
+  <link rel="stylesheet" href="./style.css">
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:wght@400;500;600&display=swap"> -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+  <script src="https://kit.fontawesome.com/7e3efebb4d.js" crossorigin="anonymous"></script>
+  <script defer src="./script.js"></script>
+</head>
+<body>
+  <header>MuazAbdin VideoPlayer</header>
+  <article class="main-container">
+    <section class="controls-container" data-hide="false">
+      <div class="video-timeline">
+        <div class="progress-area">
+          <div class="progress-bar">
+            <span class="bar-head"></span>
+            <span class="bar-time">00:00</span>
+          </div>
+        </div>
+      </div>
+      <ul class="video-controls">
+        <li class="options left">
+          <div class="video-volume">
+            <button data-active="false"><i class="fa-solid fa-volume-low"></i></button>
+            <div class="volume-bar-container">
+              <div class="volume-bar-track">
+                <div class="vol-slider"><span class="vol-thumb"></span></div>
+              </div>
+            </div>
+          </div>
+          <div class="video-timer">
+            <span class="current-time">00:00</span>
+            <span class="separator">/</span>
+            <span class="duration">00:00</span>
+          </div>
+        </li>
+        <li class="options center">
+          <button class="skip-backward"><i class="fa-solid fa-backward"></i></button>
+          <button class="play-pause"><i class="fa-solid fa-play"></i></button>
+          <button class="skip-forward"><i class="fa-solid fa-forward"></i></button>
+        </li>
+        <li class="options right">
+          <seciton class="playback-content">
+            <button class="playback-speed" data-active="false">
+              <span class="material-symbols-rounded">slow_motion_video</span>
+            </button>
+            <div class="speed-options">
+              <span data-active="false">0.5</span>
+              <span data-active="false">0.75</span>
+              <span data-active="true">Normal</span>
+              <span data-active="false">1.5</span>
+              <span data-active="false">2</span>
+            </div>
+          </seciton>
+          <button class="pic-in-pic">
+            <span class="material-icons">picture_in_picture</span>
+          </button>
+          <button class="fullscreen" data-active="false"><i class="fa-solid fa-expand fa-lg"></i></button>
+        </li>
+      </ul>
+    </section>
+    <video src="./big_buck_bunny_720p_10mb.mp4"></video>
+  </article>
+</body>
+</html>

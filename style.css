@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
+
+
+*, *::before, *::after {
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* font-family: 'Poppins', serif; */
+    font-family: 'Inconsolata', monospace;
+    background-color: hsl(60, 60%, 90%);
+}
+
+header {
+    margin-bottom: 5px; padding: 5px;
+    font-family: 'Abril Fatface', cursive;
+    font-size: 250%;
+    text-shadow: 0px 0px 10px orange;
+}
+
+.main-container {
+    max-width: 900px;
+    width: 100vw;
+    overflow: hidden;
+    border-radius: 5px;
+    position: relative;
+    border: 10px double orange;
+}
+
+.main-container video {
+    /* height: 100%; */
+    width: 100%;
+    box-shadow: 0px 0px 10px black;
+    /* z-index: -1; */
+}
+
+/* Video Controls */
+.controls-container {
+    width: 100%;
+    background: linear-gradient(to top, hsla(0, 0%, 100%, 0.7), transparent);
+    position: absolute;
+    bottom: 0; left: 0;
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .2s ease;
+}
+
+.controls-container[data-hide="false"] {
+    opacity: 1;
+    pointer-events: auto;
+    transition: all .2s ease;
+}
+
+.video-controls {
+    padding: 2px 5px 5px 5px;
+    width: 100%;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    background-color: hsla(210, 100%, 95%, 0.35);
+    height: 35px; width: 35px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    line-height: 0%;
+}
+
+button:not([data-active]):hover, .fullscreen:hover {
+    background-color: hsla(0, 100%, 50%, 0.45);    
+}
+
+.video-timer {
+    user-select: none;
+    display: flex;
+    background-color: hsla(210, 100%, 95%, 0.35);
+    padding: 8px;
+    border-radius: 50px;
+}
+
+.separator {
+    margin: 0px 3px;
+}
+
+.video-volume {
+    position: relative;
+}
+
+/* .video-volume > button:hover ~ .volume-bar-container {
+    opacity: 1;
+    pointer-events: auto;
+} */
+
+.volume-bar-container{
+    position: absolute;
+    left: 20px; bottom: 45px;
+    transform-origin: bottom left;
+    transform: rotate(-90deg);
+    background-color: hsla(210, 100%, 95%, 0.35);
+    border-radius: 15px;
+    width: 120px; height: 14px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+}
+
+.volume-bar-container:hover {
+    box-shadow: 0px 0px 10px red;
+}
+
+.volume-bar-track {
+    background-color: hsla(0, 100%, 50%, 0.45);
+    border-radius: 50px;
+    width: 90%; height: 50%;
+    cursor: pointer;
+    transform: translate(5%, 50%);
+}
+
+.vol-slider {
+    background-color: red;
+    border-radius: 50px;
+    height: 100%; width: 50%;
+    position: relative;
+}
+
+.vol-thumb {
+    height: 14px; width: 14px;
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    right: 0;
+    transform: translate(50%, -25%);
+}
+
+
+/* Playbak Content */
+.playback-content {
+    position: relative;
+}
+
+.playback-content > button:hover ~ .speed-options {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.speed-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: start;
+    background-color: hsla(0, 0%, 100%, 0.5);
+    border-radius: 5px;
+    position: absolute;
+    top: -130px; left: -10px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.speed-options > span {
+    padding: 3px;
+    font-size: large;
+    cursor: pointer;
+}
+
+.speed-options > span[data-active="true"] {
+    background-color: hsla(0, 100%, 50%, 0.45);
+}
+
+.speed-options > span[data-active="false"]:hover {
+    background-color: hsla(0, 0%, 100%, 0.75);
+}
+
+/* The Progress Bar: */
+.progress-area {
+    background-color: hsl(0, 0%, 40%);
+    cursor: pointer;
+}
+
+.progress-bar {
+    background-color: red;
+    height: 4px; width: 0%;
+    position: relative;
+}
+
+.progress-bar:hover {
+    height: 8px;
+}
+
+.progress-bar:hover .bar-head {
+    height: 13px; width: 13px;
+}
+
+.bar-head {
+    height: 10px; width: 10px;
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    right: 0;
+    transform: translate(30%, -20%);
+}
+
+.bar-time {
+    user-select: none;
+    position: absolute;
+    right: 0; padding: 0px 2px;
+    transform: translate(45%, -110%);
+    background-color: hsla(0, 100%, 50%, 0.45);
+    border-radius: 5px;
+}
+
+.bar-head, .bar-time {
+    display: none;
+}
+
+.progress-area:hover .bar-head,
+.progress-area:hover .bar-time {
+    display: initial;
+}
+
+
+
+
+
+
+
